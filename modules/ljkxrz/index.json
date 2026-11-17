@@ -1,0 +1,54 @@
+{
+  "name": "Referans Deste — üst üste kart destesi, at ve sıradakine geç",
+  "description": "Koyu zeminde tarot destesi gibi üst üste kartlar: üstteki kartta köşe numaraları, çift çerçeveli amblem (logo/baş harf), ad (bağlantı), sektör · yıl, kısa görüş ve görüş sahibi; alttakiler eğik yığın olarak görünür. Önceki/sonraki düğmesi ya da ← → tuşuyla üstteki kart fırlatılıp destenin altına gider, sayaç «1 / 8». JS yokken kartlar yatay kaydırılan sıradır. referans-cevir-kart her kartı yerinde çevirir, referans-ray-kart düz kaydırma rayıdır; bu modül tek yığında üst üste dizer (derinlik değişkeniyle eğik yığın), üst kartı atıp alta gönderir ve üstte olmayanları inert yapar — deste iskeleti ve at/geç etkileşimi ailede yok. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "style",
+  "category": "referans",
+  "subCategory": "card-deck",
+  "tags": [
+    "referans",
+    "deck",
+    "stack",
+    "cards",
+    "swipe",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "sayi": "",
+    "sayiEtiket": "",
+    "bg": "var(--mx-site-text, #111318)",
+    "text": "var(--mx-site-bg, #ffffff)",
+    "muted": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 78%, var(--mx-site-text, #111318))",
+    "kartBg": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 7%, transparent)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 18%, transparent)",
+    "accent": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 45%, var(--mx-site-bg, #ffffff))",
+    "accentText": "var(--mx-site-text, #111318)",
+    "vurguBg": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "vurguText": "var(--mx-site-text, #111318)",
+    "bgcolor": "var(--mx-site-text, #111318)",
+    "color": "var(--mx-site-bg, #ffffff)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "ad": "marka / kurum adı (dil sözlüğü ya da düz metin; logo alt yazısı)",
+      "img": "logo görseli yolu (boşsa yazı logosu)",
+      "url": "iç/dış bağlantı (dış → yeni sekme)",
+      "sektor": "dil sözlüğü (sektör / iş alanı)",
+      "metin": "dil sözlüğü (kısa görüş / iş özeti)",
+      "kisi": "dil sözlüğü (görüş sahibi)",
+      "yil": "birlikte çalışma yılı (düz metin)"
+    }
+  }
+}

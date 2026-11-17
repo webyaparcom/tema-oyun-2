@@ -1,0 +1,137 @@
+<section class="modulex-sayac-skor-tablo{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-sayac-skor-tablo-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* sayac-skor-tablo — sayac-sira numaralı satırlara dev rakam, sayac-fis noktalı döküm basar; bu modül değerleri orana göre SIRALAR ve kürsü (podyum) + skor listesi + sıralama düğmesiyle bir oyun ekranı iskeleti kurar (tarama çizgisi, mono yazı, madalya). */
+  .modulex-sayac-skor-tablo { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-sayac-skor-tablo *, .modulex-sayac-skor-tablo *::before, .modulex-sayac-skor-tablo *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-sayac-skor-tablo :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-sayac-skor-tablo :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-sayac-skor-tablo :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-sayac-skor-tablo :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-sayac-skor-tablo img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-sayac-skor-tablo) img { height: auto; }
+  .modulex-sayac-skor-tablo [hidden] { display: none !important; }
+  .modulex-sayac-skor-tablo :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-sayac-skor-tablo :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-sayac-skor-tablo-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-sayac-skor-tablo-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-sayac-skor-tablo--bassiz .modulex-sayac-skor-tablo-bas { display: none; }
+  .modulex-sayac-skor-tablo-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-sayac-skor-tablo-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-sayac-skor-tablo-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-sayac-skor-tablo-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-sayac-skor-tablo-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-sayac-skor-tablo-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-sayac-skor-tablo-dugme:hover { transform: translateY(-2px); }
+  .modulex-sayac-skor-tablo-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-sayac-skor-tablo-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-sayac-skor-tablo-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-sayac-skor-tablo-ekran { position: relative; overflow: hidden; padding: clamp(20px, 3.4vw, 40px); border: 10px solid color-mix(in srgb, --text-- 85%, --accent--); border-radius: 26px; background: --text--; color: --bg--; font-family: var(--mx-font-mono, ui-monospace, monospace); box-shadow: 0 40px 70px -40px color-mix(in srgb, --accent-- 60%, transparent), inset 0 0 60px color-mix(in srgb, --accent-- 18%, transparent); }
+  .modulex-sayac-skor-tablo-ekran::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, color-mix(in srgb, --bg-- 4%, transparent) 0 2px, transparent 2px 4px); pointer-events: none; }
+  .modulex-sayac-skor-tablo-tepe { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-block-end: 22px; }
+  .modulex-sayac-skor-tablo-oyna { display: inline-flex; align-items: center; gap: 8px; color: color-mix(in srgb, --accent-- 55%, --bg--); }
+  .modulex-sayac-skor-tablo-oyna .material-symbols-outlined { font-size: 30px; }
+  .modulex-sayac-skor-tablo-imlec { width: 12px; height: 20px; background: currentColor; animation: modulex-sayac-skor-tablo-yanip 0.9s steps(2) 5; }
+  @keyframes modulex-sayac-skor-tablo-yanip { 50% { visibility: hidden; } }
+  .modulex-sayac-skor-tablo-sirala { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; min-height: 42px; padding: 6px 14px; border: 2px solid color-mix(in srgb, --bg-- 45%, transparent); border-radius: 8px; background: transparent; color: --bg--; font: inherit; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-sayac-skor-tablo-sirala:hover { border-color: --bg--; }
+  .modulex-sayac-skor-tablo-sirala[aria-pressed="true"] { background: --bg--; color: --text--; }
+  .modulex-sayac-skor-tablo-sirala-i { font-size: 18px; transition: transform 0.3s ease; }
+  .modulex-sayac-skor-tablo-sirala[aria-pressed="true"] .modulex-sayac-skor-tablo-sirala-i { transform: rotate(180deg); }
+  .modulex-sayac-skor-tablo-kursu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 10px; max-width: 620px; margin-inline: auto; margin-block-end: 26px; }
+  .modulex-sayac-skor-tablo-basamak { display: grid; justify-items: center; gap: 6px; min-width: 0; text-align: center; }
+  .modulex-sayac-skor-tablo-basamak--1 { order: 2; }
+  .modulex-sayac-skor-tablo-basamak--2 { order: 1; }
+  .modulex-sayac-skor-tablo-basamak--3 { order: 3; }
+  .modulex-sayac-skor-tablo-madalya { color: color-mix(in srgb, --accent-- 55%, --bg--); font-size: 30px; }
+  .modulex-sayac-skor-tablo-basamak--1 .modulex-sayac-skor-tablo-madalya { font-size: 40px; }
+  .modulex-sayac-skor-tablo-basamak-ad { max-width: 100%; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.3; text-transform: uppercase; }
+  .modulex-sayac-skor-tablo-blok { display: grid; place-items: center; width: 100%; height: calc(34px + var(--h) * 26px); border-radius: 8px 8px 0 0; background: color-mix(in srgb, --bg-- 14%, --text--); font-size: 1.4rem; font-weight: 800; }
+  .modulex-sayac-skor-tablo-basamak--1 .modulex-sayac-skor-tablo-blok { background: color-mix(in srgb, --accent-- 42%, --bg--); color: --text--; }
+  .modulex-sayac-skor-tablo-liste { display: grid; gap: 4px; }
+  .modulex-sayac-skor-tablo-skor { display: grid; grid-template-columns: 3ch auto minmax(16px, 1fr) auto; align-items: center; gap: 2px 14px; padding: 10px 12px; border-radius: 8px; transition: background 0.2s ease; }
+  .modulex-sayac-skor-tablo-skor:hover { background: color-mix(in srgb, --bg-- 8%, transparent); }
+  .modulex-sayac-skor-tablo-skor--lider { background: color-mix(in srgb, --accent-- 24%, --text--); }
+  .modulex-sayac-skor-tablo-derece { color: color-mix(in srgb, --accent-- 55%, --bg--); font-weight: 800; }
+  .modulex-sayac-skor-tablo-skor--lider .modulex-sayac-skor-tablo-derece { color: inherit; }
+  .modulex-sayac-skor-tablo-oyuncu { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.3; text-transform: uppercase; }
+  .modulex-sayac-skor-tablo-ikon { font-size: 18px; }
+  .modulex-sayac-skor-tablo-onder { height: 2px; background: radial-gradient(circle, color-mix(in srgb, --bg-- 45%, transparent) 1px, transparent 1.5px) 0 50% / 8px 2px repeat-x; }
+  .modulex-sayac-skor-tablo-puan { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 800; font-variant-numeric: tabular-nums; }
+  .modulex-sayac-skor-tablo-skor--lider .modulex-sayac-skor-tablo-puan::after { content: ""; display: inline-block; width: 0.45em; height: 0.9em; margin-inline-start: 6px; vertical-align: -0.08em; background: currentColor; animation: modulex-sayac-skor-tablo-yanip 0.9s steps(2) 5; }
+  .modulex-sayac-skor-tablo-not { grid-column: 2 / -1; color: color-mix(in srgb, --bg-- 74%, --text--); font-size: 0.82rem; }
+  @media (max-width: 768px) {
+    .modulex-sayac-skor-tablo-ekran { border-width: 7px; padding: 18px 14px; }
+    .modulex-sayac-skor-tablo-skor { grid-template-columns: 3ch minmax(0, 1fr) auto; gap: 2px 10px; padding-inline: 8px; }
+    .modulex-sayac-skor-tablo-onder { display: none; }
+    .modulex-sayac-skor-tablo-basamak-ad { font-size: 0.68rem; letter-spacing: 0.02em; }
+    .modulex-sayac-skor-tablo-oyuncu { font-size: 0.85rem; letter-spacing: 0.02em; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sayac-skor-tablo :is(.modulex-sayac-skor-tablo-baslik, .modulex-sayac-skor-tablo-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sayac-skor-tablo-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-sayac-skor-tablo { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-sayac-skor-tablo *, .modulex-sayac-skor-tablo *::before, .modulex-sayac-skor-tablo *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-sayac-skor-tablo";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const sayac = (s, P, az) => {
+        const el = [...s.querySelectorAll("[data-hedef]")];
+        if (!el.length || az || !("IntersectionObserver" in window)) return;
+        const dl = document.documentElement.lang || undefined;
+        const oynat = () => el.forEach((e) => {
+          const h = Number(e.dataset.hedef);
+          const od = Number(e.dataset.ondalik) || 0;
+          const son = e.textContent;
+          if (!Number.isFinite(h)) return;
+          let f;
+          try { f = new Intl.NumberFormat(dl, { minimumFractionDigits: od, maximumFractionDigits: od }); } catch (x) { return; }
+          const t0 = performance.now();
+          const adim = (t) => {
+            const p = Math.min(1, (t - t0) / 1300);
+            e.textContent = p < 1 ? f.format(h * (1 - Math.pow(1 - p, 3))) : son;
+            if (p < 1) requestAnimationFrame(adim);
+          };
+          requestAnimationFrame(adim);
+        });
+        const io = new IntersectionObserver((gs) => {
+          gs.forEach((g) => { if (g.isIntersecting) { oynat(); io.disconnect(); } });
+        }, { threshold: 0.3 });
+        io.observe(s);
+      };
+    const sirala = (s, P) => {
+        const b = s.querySelector("[data-sirala]");
+        const l = s.querySelector("[data-sirala-liste]");
+        if (!b || !l || l.children.length < 2) return;
+        let ters = false;
+        b.hidden = false;
+        b.addEventListener("click", () => {
+          ters = !ters;
+          l.append(...[...l.children].reverse());
+          b.setAttribute("aria-pressed", String(ters));
+          s.classList.toggle(P + "--ters", ters);
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      sayac(s, P, az);
+      sirala(s, P, az);
+    });
+  })();
+</script>

@@ -1,0 +1,54 @@
+{
+  "name": "Sayaç Skor Tablosu — arcade ekranı, kürsü + sıralanabilir liste",
+  "description": "Kalın çerçeveli, tarama çizgili bir arcade ekranı: üstte kumanda ikonu ve yanıp sönen imleç, ilk üç rakam madalyalı kürsüde (2 · 1 · 3), altta orana göre sıralı skor listesi — sıra no, büyük harfli oyuncu (etiket), noktalı önder, mono skor; lider satır vurgulu. desing `sirala_ad` verilirse «Sırala» düğmesi listeyi ters çevirir (DOM sırası da). JS yoksa liste büyükten küçüğe. sayac-sira numaralı satırlara dev rakam, sayac-fis noktalı döküm basar; bu modül değerleri orana göre SIRALAR ve kürsü (podyum) + skor listesi + sıralama düğmesiyle bir oyun ekranı iskeleti kurar (tarama çizgisi, mono yazı, madalya). Sayılar sayfa diliyle biçimlenir (Intl), metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "sports_esports",
+  "category": "stats",
+  "subCategory": "leaderboard",
+  "tags": [
+    "stats",
+    "leaderboard",
+    "podium",
+    "sort",
+    "arcade",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "sirala_ad": "",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "sayi": "sayı (zorunlu; 1200 · \"4.9\")",
+      "onek": "önek (dil sözlüğü; ör. «%»)",
+      "sonek": "sonek (dil sözlüğü; ör. «+», «/5»)",
+      "etiket": "etiket (dil sözlüğü, zorunlu)",
+      "metin": "kısa not (dil sözlüğü)",
+      "ikon": "Material Symbols adı",
+      "ondalik": "ondalık basamak (yoksa sayıdan)",
+      "max": "oran tavanı (halka/çubuk/dolgu; yoksa % → 100, değilse listedeki en büyük)"
+    }
+  }
+}

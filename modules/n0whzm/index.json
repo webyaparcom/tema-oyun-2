@@ -1,0 +1,52 @@
+{
+  "name": "Üst Spot Işık — imleci izleyen ışık halkalı koyu menü",
+  "description": "Koyu çubuk; menü öğeleri ince çerçeveli karanlık bir sahnede. İmleç sahnede gezdikçe vurgu renginde yumuşak bir ışık halkası onu izler; klavyeyle odaklanan öğeye geçer, çıkınca etkin sayfanın üzerinde dinlenir. Etkin sayfa parlayan alt çizgili. Dar ekranda koyu açılır liste; JS yoksa ışık yok, menü aynı. İmleç konumuna tepki veren ışık (yalnız öğe değil sahnenin tamamı): gece/sahne dili — kayan çizgi göstergesinden farkı serbest dolaşan, yumuşak radyal ışık. Sayfalar site sayfalarından, dil seçici {{langbar}}, logo {{logo}}. Mobil menü erişilebilir (aria-expanded, Esc, odak). Renkler desing + var(--mx-site-*); mantıksal CSS → RTL.",
+  "version": "1.0.0",
+  "icon": "highlight",
+  "category": "menu",
+  "subCategory": "spotlight",
+  "tags": [
+    "menu",
+    "spotlight",
+    "pointer",
+    "dark",
+    "glow",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "0px",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "tel": "",
+    "logoimg": "",
+    "bg": "var(--mx-site-text, #111318)",
+    "text": "var(--mx-site-bg, #ffffff)",
+    "muted": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 78%, var(--mx-site-text, #111318))",
+    "kartBg": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 7%, transparent)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 18%, transparent)",
+    "accent": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 45%, var(--mx-site-bg, #ffffff))",
+    "accentText": "var(--mx-site-text, #111318)",
+    "vurguBg": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "vurguText": "var(--mx-site-text, #111318)",
+    "logoH": "44px",
+    "bgcolor": "var(--mx-site-text, #111318)",
+    "color": "var(--mx-site-bg, #ffffff)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "name": "ek bağlantı adı (dil sözlüğü)",
+      "url": "iç yol ya da dış adres (dış adres yeni sekmede)"
+    }
+  }
+}

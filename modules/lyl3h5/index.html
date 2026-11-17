@@ -1,0 +1,127 @@
+<section class="modulex-cagri-oyun-basla{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-cagri-oyun-basla-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* cagri-oyun-basla — cagri-daire-dugme dev daireyi tek tıklamalı bağlantı olarak kullanır; bu modülde düğme bir oyun mekaniğidir (basılı tut → ilerleme halkası → başla) ve ekran arcade arayüzü (HUD, tarama çizgisi) — ailede basma süresine bağlı etkileşim yok. */
+  .modulex-cagri-oyun-basla { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --yaziRenk--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-cagri-oyun-basla *, .modulex-cagri-oyun-basla *::before, .modulex-cagri-oyun-basla *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-cagri-oyun-basla :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-cagri-oyun-basla :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-cagri-oyun-basla :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-cagri-oyun-basla :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-cagri-oyun-basla img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-cagri-oyun-basla) img { height: auto; }
+  .modulex-cagri-oyun-basla [hidden] { display: none !important; }
+  .modulex-cagri-oyun-basla :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-cagri-oyun-basla :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-cagri-oyun-basla-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-cagri-oyun-basla-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-cagri-oyun-basla--bassiz .modulex-cagri-oyun-basla-bas { display: none; }
+  .modulex-cagri-oyun-basla-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-cagri-oyun-basla-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-cagri-oyun-basla-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-cagri-oyun-basla-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-cagri-oyun-basla-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-cagri-oyun-basla-dugme:hover { transform: translateY(-2px); }
+  .modulex-cagri-oyun-basla-dugme--ikincil { background: transparent; color: --yaziRenk--; border-color: --cizgi--; }
+  .modulex-cagri-oyun-basla-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-cagri-oyun-basla-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-cagri-oyun-basla-ekran3 { position: relative; display: grid; gap: clamp(20px, 3vw, 32px); overflow: hidden; padding: clamp(20px, 4vw, 40px); border: 4px solid --accent--; border-radius: 28px; background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, --accent-- 20%, transparent), transparent 65%), --bg--; box-shadow: 0 0 0 8px color-mix(in srgb, --accent-- 16%, transparent), 0 0 60px -10px color-mix(in srgb, --accent-- 55%, transparent); }
+  .modulex-cagri-oyun-basla-tarama { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, color-mix(in srgb, --yaziRenk-- 5%, transparent) 0 2px, transparent 2px 5px); animation: modulex-cagri-oyun-basla-tara 8s linear infinite; }
+  .modulex-cagri-oyun-basla-hud { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-cagri-oyun-basla-seviye { color: --accentInk--; }
+  .modulex-cagri-oyun-basla-skor { display: inline-flex; align-items: baseline; gap: 8px; }
+  .modulex-cagri-oyun-basla-skor small { color: --muted--; }
+  .modulex-cagri-oyun-basla-skor strong { font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+  .modulex-cagri-oyun-basla-orta { position: relative; display: grid; justify-items: center; gap: 16px; max-width: 720px; margin-inline: auto; text-align: center; }
+  .modulex-cagri-oyun-basla-baslik { letter-spacing: 0.01em; text-transform: uppercase; }
+  .modulex-cagri-oyun-basla-basla { position: relative; display: grid; place-items: center; width: clamp(150px, 17vw, 190px); aspect-ratio: 1; margin-block: 12px 4px; border-radius: 50%; background: --accent--; color: --accentText--; font-weight: 800; letter-spacing: 0.04em; text-decoration: none; text-transform: uppercase; box-shadow: 0 8px 0 color-mix(in srgb, --accent-- 50%, --bg--); user-select: none; -webkit-user-select: none; touch-action: manipulation; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-cagri-oyun-basla-basla:hover { transform: translateY(-2px); }
+  .modulex-cagri-oyun-basla-basla:active, .modulex-cagri-oyun-basla-basla.modulex-cagri-oyun-basla--basili { transform: translateY(6px); box-shadow: 0 2px 0 color-mix(in srgb, --accent-- 50%, --bg--); }
+  .modulex-cagri-oyun-basla-halka2 { position: absolute; inset: -12px; width: calc(100% + 24px); height: calc(100% + 24px); transform: rotate(-90deg); pointer-events: none; }
+  .modulex-cagri-oyun-basla-hiz, .modulex-cagri-oyun-basla-hdolu { fill: none; stroke-width: 4; }
+  .modulex-cagri-oyun-basla-hiz { stroke: color-mix(in srgb, --accent-- 30%, transparent); }
+  .modulex-cagri-oyun-basla-hdolu { stroke: --accentInk--; stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--t, 0) * 100); stroke-linecap: round; }
+  .modulex-cagri-oyun-basla:not(.modulex-cagri-oyun-basla--tutjs) .modulex-cagri-oyun-basla-hdolu { display: none; }
+  .modulex-cagri-oyun-basla-bas-ic { display: grid; justify-items: center; gap: 2px; padding: 16px; line-height: 1.2; text-align: center; }
+  .modulex-cagri-oyun-basla-oikon { font-size: 44px; }
+  .modulex-cagri-oyun-basla-ipucu { color: --muted--; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; animation: modulex-cagri-oyun-basla-yanip 1.4s linear infinite; }
+  .modulex-cagri-oyun-basla:not(.modulex-cagri-oyun-basla--tutjs) .modulex-cagri-oyun-basla-ipucu { display: none; }
+  .modulex-cagri-oyun-basla-ikinci2 { color: --yaziRenk--; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; transition: color 0.2s ease; }
+  .modulex-cagri-oyun-basla-ikinci2:hover { color: --accentInk--; }
+  @keyframes modulex-cagri-oyun-basla-tara { to { background-position: 0 100px; } }
+  @keyframes modulex-cagri-oyun-basla-yanip { 0%, 59.9% { visibility: visible; } 60%, 100% { visibility: hidden; } }
+  @media (max-width: 768px) {
+    .modulex-cagri-oyun-basla-ekran3 { border-width: 3px; border-radius: 20px; }
+    .modulex-cagri-oyun-basla-hud { font-size: 0.75rem; }
+  }
+  .modulex-cagri-oyun-basla-wasvg { width: 1.25em; height: 1.25em; flex: none; }
+  .modulex-cagri-oyun-basla-maddeler { display: grid; gap: 12px; }
+  .modulex-cagri-oyun-basla-madde { display: flex; align-items: flex-start; gap: 12px; }
+  .modulex-cagri-oyun-basla-mikon { flex: none; color: --accentInk--; font-size: 24px; }
+  .modulex-cagri-oyun-basla-myazi { display: grid; gap: 2px; }
+  .modulex-cagri-oyun-basla-myazi strong { font-weight: 700; }
+  .modulex-cagri-oyun-basla-myazi small { color: --muted--; font-size: 0.92rem; }
+  .modulex-cagri-oyun-basla-not { color: --muted--; font-size: 0.9rem; }
+  .modulex-cagri-oyun-basla-saat { display: flex; align-items: center; gap: 8px; color: --muted--; font-size: 0.95rem; }
+  .modulex-cagri-oyun-basla-saat .material-symbols-outlined { font-size: 20px; color: --accentInk--; }
+  .modulex-cagri-oyun-basla-metin { max-width: 62ch; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-oyun-basla :is(.modulex-cagri-oyun-basla-baslik, .modulex-cagri-oyun-basla-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-oyun-basla-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-cagri-oyun-basla { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-cagri-oyun-basla *, .modulex-cagri-oyun-basla *::before, .modulex-cagri-oyun-basla *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-cagri-oyun-basla";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const basiliTut = (s, P, az) => {
+        const b = s.querySelector("a[data-tut]");
+        if (!b || az) return;
+        const sure = Number(b.dataset.tut) || 0;
+        if (!sure) return;
+        s.classList.add(P + "--tutjs");
+        let t0 = 0;
+        let raf = 0;
+        let bitti = false;
+        const ciz = (p) => b.style.setProperty("--t", p.toFixed(3));
+        const dur = () => { cancelAnimationFrame(raf); t0 = 0; b.classList.remove(P + "--basili"); if (!bitti) ciz(0); };
+        const adim = (t) => {
+          if (!t0) t0 = t;
+          const p = Math.min(1, (t - t0) / sure);
+          ciz(p);
+          if (p >= 1) { bitti = true; b.classList.remove(P + "--basili"); location.href = b.href; return; }
+          raf = requestAnimationFrame(adim);
+        };
+        b.addEventListener("pointerdown", (e) => {
+          if (e.button) return;
+          e.preventDefault();
+          b.classList.add(P + "--basili");
+          cancelAnimationFrame(raf);
+          t0 = 0;
+          raf = requestAnimationFrame(adim);
+        });
+        ["pointerup", "pointerleave", "pointercancel"].forEach((n) => b.addEventListener(n, dur));
+        b.addEventListener("click", (e) => { if (e.detail > 0 && !bitti) e.preventDefault(); });
+        b.addEventListener("contextmenu", (e) => e.preventDefault());
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      basiliTut(s, P, az);
+    });
+  })();
+</script>

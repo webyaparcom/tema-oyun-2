@@ -1,0 +1,63 @@
+{
+  "name": "Açılış Terminal — satır satır yazılan komut penceresi, arkada ekran görüntüsü",
+  "description": "Bir yanda üst etiket, h1, metin ve düğmeler; diğer yanda noktalı masa zemininde koyu terminal penceresi (üç nokta başlık çubuğu + dosya adı): her madde bir komut satırı (› komut · çıktı değeri), satırlar sırayla daktilo gibi açılır, sonda yanıp sönen imleç; altta durum çubuğu (rozet). Görsel verilirse pencerenin arkasında eğik ikinci pencere olarak durur. acilis-cam-panel ve acilis-cagri-kutusu düz kutudur; bu modül maddeleri komut satırlarına çevirir (istem › komut → çıktı), satırları sırayla kırpma maskesiyle açar (RTL'de ters yönden) ve görseli arkadaki eğik pencereye alır. iletisim-terminal iletişim formudur, bu modül h1'li açılıştır. Başlık h1, ilk görsel eager. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Başlık yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "terminal",
+  "category": "hero",
+  "subCategory": "terminal",
+  "tags": [
+    "hero",
+    "terminal",
+    "code",
+    "typing",
+    "tech",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "img": "",
+    "img2": "",
+    "video": "",
+    "poster": "",
+    "alt": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "cta2_ad": "",
+    "cta2_url": "",
+    "rozet_ikon": "",
+    "rozet_deger": "",
+    "rozet_metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "terminal_ad": "",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data",
+    "alanlar": {
+      "ikon": "madde ikonu (Material Symbols)",
+      "deger": "sayı/değer (ör. 1.200+, dil sözlüğü olabilir)",
+      "metin": "madde metni (dil sözlüğü)",
+      "img": "madde görseli (mozaik yerleşimlerde)",
+      "url": "madde bağlantısı"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "SSS Kart Destesi — üst üste kartlarda tek soru",
+  "description": "Sorular üst üste duran bir kart destesi: en üstteki kartta sıra rozeti (3 / 6), ikon, büyük soru ve cevap; arkadaki iki kart hafif dönük kenarlarıyla görünür. Önceki/sonraki düğmeleri, noktalar, ok tuşları ve kaydırma ile deste döner (döngülü). JS yokken kartlar alt alta liste. sss-ray yatay kayan kart şeridi (hepsi yan yana), sss-cevir-kart her kartı yerinde çevirir; bu modülde aynı anda tek soru okunur — kartlar aynı ızgara hücresinde üst üste, sıra değişince alttaki kart öne gelir (deste/yığın iskeleti, inert alt kartlar, sayaç + nokta göstergesi). Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Açılırlar yerel <details> (JS'siz). Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "style",
+  "category": "faq",
+  "subCategory": "card-deck",
+  "tags": [
+    "faq",
+    "deck",
+    "stack",
+    "carousel",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "tekAcik": "",
+    "ilkAcik": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "bg": "var(--mx-site-text, #111318)",
+    "text": "var(--mx-site-bg, #ffffff)",
+    "muted": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 78%, var(--mx-site-text, #111318))",
+    "kartBg": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 7%, transparent)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 18%, transparent)",
+    "accent": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 45%, var(--mx-site-bg, #ffffff))",
+    "accentText": "var(--mx-site-text, #111318)",
+    "vurguBg": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "vurguText": "var(--mx-site-text, #111318)",
+    "bgcolor": "var(--mx-site-text, #111318)",
+    "color": "var(--mx-site-bg, #ffffff)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "soru": "dil sözlüğü (zorunlu; eski `question`)",
+      "cevap": "dil sözlüğü (eski `answer`)",
+      "kategori": "grup adı, dil sözlüğü (gruplayan yerleşimde)",
+      "ikon": "Material Symbols adı (destekleyen yerleşimde)",
+      "url": "«Devamı» bağlantısı (iç slug ya da tam URL)"
+    }
+  }
+}

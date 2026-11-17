@@ -1,0 +1,147 @@
+<section class="modulex-iletisim-deste{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-iletisim-deste-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* iletisim-deste — iletisim-ray yatay kaydırma rayı, iletisim-sekmeli sekme panelidir; bu modül üst üste YIĞILMIŞ DESTE: tek grid hücresinde --k sıra farkıyla translate/scale/opacity/z-index, döngüsel gezinme (desteCevir), kaydırma jesti ve nokta göstergesi. */
+  .modulex-iletisim-deste { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-iletisim-deste *, .modulex-iletisim-deste *::before, .modulex-iletisim-deste *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-iletisim-deste :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-iletisim-deste :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-iletisim-deste :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-iletisim-deste :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-iletisim-deste img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-iletisim-deste) img { height: auto; }
+  .modulex-iletisim-deste [hidden] { display: none !important; }
+  .modulex-iletisim-deste :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-iletisim-deste :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-iletisim-deste-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-iletisim-deste-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-iletisim-deste--bassiz .modulex-iletisim-deste-bas { display: none; }
+  .modulex-iletisim-deste-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-deste-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-iletisim-deste-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-iletisim-deste-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-iletisim-deste-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-iletisim-deste-dugme:hover { transform: translateY(-2px); }
+  .modulex-iletisim-deste-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-iletisim-deste-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-iletisim-deste-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-iletisim-deste-duzen { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+  .modulex-iletisim-deste-yazi { display: grid; gap: 16px; min-width: 0; }
+  .modulex-iletisim-deste-deste { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; border-radius: --yuvarlak--; outline-offset: 8px; }
+  .modulex-iletisim-deste--djs .modulex-iletisim-deste-deste { grid-template-columns: minmax(0, 1fr); padding-block-end: 44px; touch-action: pan-y; user-select: none; }
+  .modulex-iletisim-deste-dkart { display: grid; align-content: start; gap: 10px; min-block-size: 230px; padding: clamp(22px, 3vw, 34px); border: 1px solid --cizgi--; border-radius: --yuvarlak--; background: --kartBg--; box-shadow: 0 20px 44px -30px color-mix(in srgb, --text-- 60%, transparent); }
+  .modulex-iletisim-deste--djs .modulex-iletisim-deste-dkart { grid-area: 1 / 1; z-index: calc(10 - var(--k)); opacity: calc(1 - min(var(--k), 3) * 0.28); transform: translateY(calc(min(var(--k), 3) * 14px)) scale(calc(1 - min(var(--k), 3) * 0.05)); transform-origin: 50% 100%; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, box-shadow 0.4s ease; }
+  .modulex-iletisim-deste--djs .modulex-iletisim-deste-dkart[aria-hidden="true"] { box-shadow: 0 10px 24px -20px color-mix(in srgb, --text-- 50%, transparent); }
+  .modulex-iletisim-deste--djs .modulex-iletisim-deste-dkart[aria-hidden="true"] > * { visibility: hidden; }
+  .modulex-iletisim-deste-dikon { display: inline-grid; place-items: center; inline-size: 64px; block-size: 64px; margin-block-end: 8px; border-radius: 20px; background: --accent--; color: --accentText--; font-size: 32px; }
+  .modulex-iletisim-deste-ddeger { color: inherit; font-family: var(--mx-font-heading, inherit); font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 750; line-height: 1.25; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-deste-ddeger:hover { color: --accentInk--; }
+  .modulex-iletisim-deste-dkart .modulex-iletisim-deste-eylem { margin-block-start: auto; }
+  .modulex-iletisim-deste-kumanda { display: flex; align-items: center; gap: 14px; margin-block-start: 12px; }
+  .modulex-iletisim-deste:not(.modulex-iletisim-deste--djs) .modulex-iletisim-deste-kumanda { display: none; }
+  .modulex-iletisim-deste-git { display: inline-grid; place-items: center; inline-size: 48px; block-size: 48px; border: 1.5px solid --cizgi--; border-radius: 50%; background: --kartBg--; color: --text--; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-deste-git:hover { border-color: --accent--; transform: scale(1.06); }
+  .modulex-iletisim-deste-noktalar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .modulex-iletisim-deste-nokta { inline-size: 14px; block-size: 14px; padding: 0; border: 0; border-radius: 999px; background: color-mix(in srgb, --text-- 25%, transparent); transition: inline-size 0.3s ease, background 0.3s ease; }
+  .modulex-iletisim-deste-nokta[aria-pressed="true"] { inline-size: 32px; background: --accent--; }
+  @media (max-width: 1024px) {
+    .modulex-iletisim-deste-duzen { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-iletisim-deste-dkart { min-block-size: 0; }
+    .modulex-iletisim-deste-kumanda { justify-content: space-between; }
+  }
+  .modulex-iletisim-deste-kikon { flex: none; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, transparent); color: --accentInk--; font-size: 24px; }
+  .modulex-iletisim-deste-ketiket { display: block; color: --muted--; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-deste-deger { color: inherit; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-deste-deger:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-iletisim-deste-eylem { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.2s ease; }
+  .modulex-iletisim-deste-eylem:hover { gap: 10px; }
+  .modulex-iletisim-deste-eylem .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-deste-kopya { display: none; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: --text--; font: inherit; font-size: 0.85rem; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease; }
+  .modulex-iletisim-deste--kjs .modulex-iletisim-deste-kopya { display: inline-flex; }
+  .modulex-iletisim-deste-kopya:hover { border-color: --accent--; }
+  .modulex-iletisim-deste-kopya .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-deste--kopyalandi { background: color-mix(in srgb, --accent-- 14%, transparent); }
+  .modulex-iletisim-deste-sosyal { display: grid; gap: 10px; }
+  .modulex-iletisim-deste-sbaslik { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-deste-sliste { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-deste-cip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; color: inherit; font-weight: 650; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-deste-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-iletisim-deste-cikon { font-size: 18px; }
+  .modulex-iletisim-deste-harita { position: relative; overflow: hidden; min-height: 280px; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-iletisim-deste-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .modulex-iletisim-deste-hdesen { position: absolute; inset: 0; display: grid; place-items: center; background-color: color-mix(in srgb, --accent-- 8%, --kartBg--); background-image: linear-gradient(color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), radial-gradient(circle at 30% 40%, color-mix(in srgb, --accent-- 18%, transparent) 0 18%, transparent 19%); background-size: 36px 36px, 36px 36px, 100% 100%; }
+  .modulex-iletisim-deste-pin { color: --accentInk--; font-size: 56px; animation: modulex-iletisim-deste-zipla 2.4s ease-in-out infinite; }
+  @keyframes modulex-iletisim-deste-zipla { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .modulex-iletisim-deste-hyol { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: --bg--; color: --text--; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px color-mix(in srgb, --text-- 16%, transparent); transition: transform 0.2s ease; }
+  .modulex-iletisim-deste-hyol:hover { transform: translateY(-2px); }
+  .modulex-iletisim-deste-hyol .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-deste :is(.modulex-iletisim-deste-baslik, .modulex-iletisim-deste-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-deste-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-deste { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-iletisim-deste *, .modulex-iletisim-deste *::before, .modulex-iletisim-deste *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-iletisim-deste";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const desteCevir = (s, P) => {
+        const d = s.querySelector("[data-deste]");
+        if (!d) return;
+        const K = [...d.querySelectorAll("[data-deste-kart]")];
+        if (K.length < 2) return;
+        s.classList.add(P + "--djs");
+        const N = [...s.querySelectorAll("[data-deste-nokta]")];
+        let n = 0;
+        const kur = () => {
+          K.forEach((x, i) => {
+            const k = (i - n + K.length) % K.length;
+            x.style.setProperty("--k", String(k));
+            x.toggleAttribute("inert", k !== 0);
+            x.setAttribute("aria-hidden", String(k !== 0));
+          });
+          N.forEach((x, i) => x.setAttribute("aria-pressed", String(i === n)));
+        };
+        const git = (y) => { n = (n + y + K.length) % K.length; kur(); };
+        const rtl = () => getComputedStyle(d).direction === "rtl";
+        s.querySelectorAll("[data-deste-git]").forEach((b) => {
+          b.hidden = false;
+          b.addEventListener("click", () => git(Number(b.dataset.desteGit) || 1));
+        });
+        N.forEach((x, i) => x.addEventListener("click", () => { n = i; kur(); }));
+        d.addEventListener("keydown", (e) => {
+          if (e.key === (rtl() ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); git(1); }
+          else if (e.key === (rtl() ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); git(-1); }
+        });
+        let x0 = null;
+        d.addEventListener("pointerdown", (e) => { x0 = e.clientX; });
+        d.addEventListener("pointerup", (e) => {
+          if (x0 === null) return;
+          const dx = e.clientX - x0;
+          x0 = null;
+          if (Math.abs(dx) > 40) git((dx < 0) !== rtl() ? 1 : -1);
+        });
+        kur();
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      desteCevir(s, P, az);
+    });
+  })();
+</script>

@@ -1,0 +1,57 @@
+{
+  "name": "İletişim Deste — üst üste kart destesi, önceki/sonraki + nokta göstergesi, kaydırma",
+  "description": "Her kanal bir oyun kartı gibi destede: en üstteki kart büyük ikon, etiket, iri değer ve eylem bağlantısıyla; arkadakiler kademeli küçülüp aşağıda görünür. Önceki/sonraki düğmeleri, nokta göstergesi, ok tuşları (RTL'de ters) ve parmakla kaydırma desteyi döndürür; arkadaki kartlar inert. JS yoksa kartlar ızgarada yan yana. iletisim-ray yatay kaydırma rayı, iletisim-sekmeli sekme panelidir; bu modül üst üste YIĞILMIŞ DESTE: tek grid hücresinde --k sıra farkıyla translate/scale/opacity/z-index, döngüsel gezinme (desteCevir), kaydırma jesti ve nokta göstergesi. Kanallar desing'den (adres · telefon · WhatsApp · e-posta · saat) + data satırları; etiketler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Kanal yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "style",
+  "category": "contact",
+  "subCategory": "card-deck",
+  "tags": [
+    "contact",
+    "deck",
+    "stack",
+    "swipe",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "adres": "",
+    "telefon": "",
+    "eposta": "",
+    "whatsapp": "",
+    "saat": "",
+    "haritaUrl": "",
+    "haritaGomme": "",
+    "waMesaj": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing",
+    "alanlar": {
+      "ikon": "Material Symbols adı (kanal türü ikondan da anlaşılır: mail · call · location_on · schedule)",
+      "deger": "dil sözlüğü (görünen değer, zorunlu; eski `text`)",
+      "url": "bağlantı (boşsa e-posta/telefon/haritadan türetilir)",
+      "baslik": "dil sözlüğü (kanal etiketi)"
+    }
+  }
+}

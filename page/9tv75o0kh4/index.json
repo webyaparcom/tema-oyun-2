@@ -1,0 +1,40 @@
+{
+  "id": "9tv75o0kh4",
+  "name": {
+    "tr": "Oyunlar",
+    "en": "Games",
+    "ar": "الألعاب"
+  },
+  "description": {
+    "tr": "Atölyeden çıkan oyunlar ve yapım kareleri (kurgusal).",
+    "en": "Games from the workshop and production frames (fictional).",
+    "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي)."
+  },
+  "keyword": {
+    "tr": "piksel oyun, bulmaca oyunu, platform oyunu",
+    "en": "pixel game, puzzle game, platformer",
+    "ar": "لعبة بكسل، لعبة ألغاز، لعبة منصّات"
+  },
+  "path": "hizmetler",
+  "icon": "sports_esports",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "f711td",
+      "lyl3h5"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Oyunlar",
+    "en": "Games",
+    "ar": "الألعاب"
+  },
+  "date": "2026-11-16T22:35:27.296Z",
+  "update": "2026-11-16T22:46:41.450Z"
+}

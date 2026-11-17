@@ -1,0 +1,93 @@
+<section class="modulex-acilis-terminal{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-acilis-terminal-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* acilis-terminal — acilis-cam-panel ve acilis-cagri-kutusu düz kutudur; bu modül maddeleri komut satırlarına çevirir (istem › komut → çıktı), satırları sırayla kırpma maskesiyle açar (RTL'de ters yönden) ve görseli arkadaki eğik pencereye alır. iletisim-terminal iletişim formudur, bu modül h1'li açılıştır. */
+  .modulex-acilis-terminal { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-acilis-terminal *, .modulex-acilis-terminal *::before, .modulex-acilis-terminal *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-acilis-terminal :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-acilis-terminal :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-acilis-terminal :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-acilis-terminal :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-acilis-terminal img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-acilis-terminal) img { height: auto; }
+  .modulex-acilis-terminal [hidden] { display: none !important; }
+  .modulex-acilis-terminal :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-acilis-terminal :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-acilis-terminal-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-acilis-terminal-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-acilis-terminal--bassiz .modulex-acilis-terminal-bas { display: none; }
+  .modulex-acilis-terminal-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-acilis-terminal-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-acilis-terminal-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-acilis-terminal-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-acilis-terminal-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-acilis-terminal-dugme:hover { transform: translateY(-2px); }
+  .modulex-acilis-terminal-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-acilis-terminal-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-acilis-terminal-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-acilis-terminal-duzen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+  .modulex-acilis-terminal-duzen--tek { grid-template-columns: minmax(0, 1fr); max-width: 820px; }
+  .modulex-acilis-terminal-yazi { display: grid; gap: 20px; justify-items: start; min-width: 0; }
+  .modulex-acilis-terminal-masa { position: relative; min-width: 0; padding: clamp(18px, 3vw, 40px); border-radius: calc(--yuvarlak-- * 1.4); background-color: --kartBg--; background-image: radial-gradient(color-mix(in srgb, --text-- 18%, transparent) 1px, transparent 1.5px); background-size: 18px 18px; }
+  .modulex-acilis-terminal-arkapen { position: absolute; inset-block-start: 6%; inset-inline-end: 4%; inline-size: 62%; margin: 0; overflow: hidden; border: 1px solid --cizgi--; border-radius: 12px; box-shadow: 0 30px 60px -30px color-mix(in srgb, --text-- 60%, transparent); transform: rotate(4deg); transition: transform 0.6s ease; }
+  .modulex-acilis-terminal-masa:hover .modulex-acilis-terminal-arkapen { transform: rotate(6deg) translateY(-6px); }
+  .modulex-acilis-terminal-apfoto { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .modulex-acilis-terminal-terminal { position: relative; z-index: 1; display: grid; gap: 4px; inline-size: min(100%, 560px); margin-block-start: clamp(40px, 7vw, 96px); overflow: hidden; border-radius: 14px; background-color: --text--; color: --bg--; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95rem; box-shadow: 0 40px 70px -36px color-mix(in srgb, --text-- 85%, transparent); }
+  .modulex-acilis-terminal-tbar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background-color: color-mix(in srgb, --bg-- 10%, --text--); }
+  .modulex-acilis-terminal-tnok { inline-size: 11px; block-size: 11px; border-radius: 50%; background-color: color-mix(in srgb, --bg-- 35%, --text--); }
+  .modulex-acilis-terminal-tnok:first-child { background-color: --accent--; }
+  .modulex-acilis-terminal-tad { margin-inline-start: auto; color: color-mix(in srgb, --bg-- 75%, --text--); font-size: 0.8rem; }
+  .modulex-acilis-terminal-hatlar { display: grid; gap: 10px; padding: 18px 20px 6px; }
+  .modulex-acilis-terminal-hat { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; animation: modulex-acilis-terminal-yaz 0.8s calc(var(--i) * 0.6s + 0.4s) steps(22, end) both; }
+  @keyframes modulex-acilis-terminal-yaz { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  [dir="rtl"] .modulex-acilis-terminal-hat { animation-name: modulex-acilis-terminal-yazr; }
+  @keyframes modulex-acilis-terminal-yazr { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+  .modulex-acilis-terminal-istem { display: inline-block; color: color-mix(in srgb, --accent-- 45%, --bg--); font-weight: 800; }
+  [dir="rtl"] .modulex-acilis-terminal-istem { transform: scaleX(-1); }
+  .modulex-acilis-terminal-komut { font-weight: 600; }
+  .modulex-acilis-terminal-cikti { display: inline-flex; align-items: center; gap: 6px; margin-inline-start: auto; color: color-mix(in srgb, --accent-- 40%, --bg--); font-weight: 800; font-variant-numeric: tabular-nums; }
+  .modulex-acilis-terminal-cikon { font-size: 18px; }
+  .modulex-acilis-terminal-imlec { display: block; inline-size: 10px; block-size: 1.15em; margin: 4px 20px 16px; background-color: --bg--; animation: modulex-acilis-terminal-imlec 1.05s steps(1, end) infinite; }
+  @keyframes modulex-acilis-terminal-imlec { 50% { visibility: hidden; } }
+  .modulex-acilis-terminal-tdurum { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 10px 16px; border-block-start: 1px solid color-mix(in srgb, --bg-- 18%, transparent); color: color-mix(in srgb, --bg-- 85%, --text--); font-size: 0.8rem; }
+  .modulex-acilis-terminal-tdurum .modulex-acilis-terminal-rikon { color: color-mix(in srgb, --accent-- 45%, --bg--); font-size: 16px; }
+  .modulex-acilis-terminal-tdurum .modulex-acilis-terminal-rdeger { font-weight: 800; }
+  @media (max-width: 1024px) {
+    .modulex-acilis-terminal-duzen { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-acilis-terminal-terminal { font-size: 0.85rem; }
+    .modulex-acilis-terminal-hatlar { padding-inline: 14px; }
+    .modulex-acilis-terminal-cikti { margin-inline-start: 0; }
+    .modulex-acilis-terminal-arkapen { inline-size: 78%; }
+  }
+  .modulex-acilis-terminal-h1 { font-family: var(--mx-font-heading, inherit); font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+  .modulex-acilis-terminal-metin { color: --muted--; font-size: clamp(1.02rem, 1.3vw, 1.18rem); line-height: 1.7; max-width: 62ch; }
+  .modulex-acilis-terminal-ogeler { display: flex; flex-wrap: wrap; gap: 14px 30px; }
+  .modulex-acilis-terminal-oge { display: flex; align-items: center; gap: 10px; }
+  .modulex-acilis-terminal-oikon { color: --accentInk--; font-size: 22px; }
+  .modulex-acilis-terminal-odeger { font-size: 1.45rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .modulex-acilis-terminal-ometin { color: --muted--; font-size: 0.95rem; }
+  .modulex-acilis-terminal-obag { color: inherit; text-underline-offset: 3px; }
+  .modulex-acilis-terminal-gir { animation: modulex-acilis-terminal-gir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes modulex-acilis-terminal-gir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-terminal-h1 { letter-spacing: 0; line-height: 1.3; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-terminal :is(.modulex-acilis-terminal-baslik, .modulex-acilis-terminal-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-terminal-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-acilis-terminal { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-acilis-terminal *, .modulex-acilis-terminal *::before, .modulex-acilis-terminal *::after { animation: none !important; transition: none !important; }
+  }
+</style>
