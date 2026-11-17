@@ -1,0 +1,114 @@
+{
+  "data": [
+    {
+      "id": "9tv75o0kh4",
+      "name": {
+        "tr": "Oyunlar",
+        "en": "Games",
+        "ar": "الألعاب"
+      },
+      "description": {
+        "tr": "Atölyeden çıkan oyunlar ve yapım kareleri (kurgusal).",
+        "en": "Games from the workshop and production frames (fictional).",
+        "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي)."
+      },
+      "path": "hizmetler",
+      "icon": "sports_esports",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "f711td",
+          "lyl3h5"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Atölye",
+        "en": "Workshop",
+        "ar": "الورشة"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "6wxh9f",
+          "ljkxrz",
+          "lyl3h5"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Skor tablosu ve oyun ortakları (kurgusal).",
+        "en": "Scoreboard and game partners (fictional).",
+        "ar": "لوحة النتائج وشركاء اللعب (افتراضي)."
+      }
+    },
+    {
+      "id": "f54berrh3u",
+      "name": {
+        "tr": "SSS",
+        "en": "FAQ",
+        "ar": "الأسئلة"
+      },
+      "description": {
+        "tr": "Merak edilenler ve kısa yanıtlar.",
+        "en": "Common questions and short answers.",
+        "ar": "أسئلة متكررة وإجابات موجزة."
+      },
+      "path": "sorular",
+      "icon": "help",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "1t3ifz",
+          "lyl3h5"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "تواصل"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 3,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "nczb5z",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, telefon ve çalışma saatleri.",
+        "en": "Address, phone and opening hours.",
+        "ar": "العنوان والهاتف وساعات العمل."
+      }
+    }
+  ],
+  "desc": []
+}

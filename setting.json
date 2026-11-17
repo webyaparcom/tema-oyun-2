@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Sekizbit Oyun Atölyesi: İzmir’de piksel sanatlı bulmaca, keşif ve platform oyunları geliştiren küçük bağımsız ekip; ses tasarımı ve oyun testi. Demo site; içerik kurgusaldır.",
+    "en": "Sekizbit Game Workshop: a small indie team in Izmir making pixel-art puzzle, exploration and platform games, plus sound design and game testing. Demo site; content is fictional.",
+    "ar": "ورشة سكيزبيت للألعاب: فريق مستقل صغير في إزمير يطوّر ألعاب ألغاز واستكشاف ومنصّات بفن البكسل، مع تصميم الصوت واختبار الألعاب. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "bağımsız oyun stüdyosu, piksel sanat, bulmaca oyunu, platform oyunu, oyun ses tasarımı, izmir",
+    "en": "indie game studio, pixel art, puzzle game, platform game, game sound design, izmir",
+    "ar": "استوديو ألعاب مستقل، فن البكسل، لعبة ألغاز، لعبة منصّات، تصميم صوت الألعاب، إزمير"
+  },
+  "category": "Kurumsal",
+  "name": "Sekizbit",
+  "domain": "oyun-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "rubik",
+    "heading": "barlow-condensed",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-kufi-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#34C77B",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "1px",
+    "--mx-radius-md": "2px",
+    "--mx-radius-lg": "3px",
+    "--mx-radius-xl": "4px"
+  },
+  "icon": "icon.png"
+}

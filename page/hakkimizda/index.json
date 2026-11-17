@@ -1,0 +1,48 @@
+{
+  "name": {
+    "tr": "Atölye",
+    "en": "Workshop",
+    "ar": "الورشة"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "6wxh9f",
+      "ljkxrz",
+      "lyl3h5"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Skor tablosu ve oyun ortakları (kurgusal).",
+    "en": "Scoreboard and game partners (fictional).",
+    "ar": "لوحة النتائج وشركاء اللعب (افتراضي)."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Atölye",
+    "en": "Workshop",
+    "ar": "الورشة"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T22:46:41.456Z",
+  "date": "2026-10-30"
+}
