@@ -3,17 +3,23 @@
   "name": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "description": {
     "tr": "Kalite politikamız",
     "en": "Our quality policy",
-    "ar": "سياسة الجودة لدينا"
+    "ar": "سياسة الجودة لدينا",
+    "de": "Unsere Qualitätspolitik",
+    "ru": "Наша политика качества"
   },
   "keyword": {
     "tr": "Kalite Politikamız",
     "en": "quality policy, quality, continuous improvement",
-    "ar": "سياسة الجودة, الجودة, التحسين المستمر"
+    "ar": "سياسة الجودة, الجودة, التحسين المستمر",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "path": "kalitepolitikamiz",
   "icon": "verified",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Kalite Politikamız</h2>\n<p>Her sürümde oyun testi, erişilebilirlik ayarları ve açık sürüm notları.</p>",
     "en": "<h2>Our quality policy</h2>\n<p>Game testing, accessibility settings and open release notes in every build.</p>",
-    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>اختبار اللعب وإعدادات إمكانية الوصول وملاحظات إصدار واضحة في كل نسخة.</p>"
+    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>اختبار اللعب وإعدادات إمكانية الوصول وملاحظات إصدار واضحة في كل نسخة.</p>",
+    "de": "<h2>Unsere Qualitätsrichtlinie</h2>\n<p>Spieldaten, Barrierefreiheit und offene Versionshinweise in jedem Build.</p>",
+    "ru": "<h2>Наша политика качества</h2>\n<p>Тестирование игры, настройки доступности и открытые заметки о выпуске в каждой сборке.</p>"
   },
   "title": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "date": "2026-11-16T22:35:26.921Z",
   "update": "2026-11-16T22:46:41.487Z",

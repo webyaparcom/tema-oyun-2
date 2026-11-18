@@ -4,12 +4,16 @@
   "description": {
     "tr": "Sekizbit Oyun Atölyesi: İzmir’de piksel sanatlı bulmaca, keşif ve platform oyunları geliştiren küçük bağımsız ekip; ses tasarımı ve oyun testi. Demo site; içerik kurgusaldır.",
     "en": "Sekizbit Game Workshop: a small indie team in Izmir making pixel-art puzzle, exploration and platform games, plus sound design and game testing. Demo site; content is fictional.",
-    "ar": "ورشة سكيزبيت للألعاب: فريق مستقل صغير في إزمير يطوّر ألعاب ألغاز واستكشاف ومنصّات بفن البكسل، مع تصميم الصوت واختبار الألعاب. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "ورشة سكيزبيت للألعاب: فريق مستقل صغير في إزمير يطوّر ألعاب ألغاز واستكشاف ومنصّات بفن البكسل، مع تصميم الصوت واختبار الألعاب. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Sekizbit Oyun Atölyesi: ein kleines unabhängiges Team in İzmir, das Rätsel-, Entdeckungs- und Plattformspiele in Pixelkunst entwickelt; Sounddesign und Spieletests. Demo-Website; der Inhalt ist fiktiv.",
+    "ru": "Sekizbit Oyun Atölyesi: небольшая независимая команда в Измире, создающая пазлы, игры-исследования и платформеры в пиксельной графике; звуковой дизайн и тестирование игр. Демо-сайт; содержание вымышленное."
   },
   "keyword": {
     "tr": "bağımsız oyun stüdyosu, piksel sanat, bulmaca oyunu, platform oyunu, oyun ses tasarımı, izmir",
     "en": "indie game studio, pixel art, puzzle game, platform game, game sound design, izmir",
-    "ar": "استوديو ألعاب مستقل، فن البكسل، لعبة ألغاز، لعبة منصّات، تصميم صوت الألعاب، إزمير"
+    "ar": "استوديو ألعاب مستقل، فن البكسل، لعبة ألغاز، لعبة منصّات، تصميم صوت الألعاب، إزمير",
+    "de": "Unabhängiges Spielestudio, Pixelart, Puzzle-Spiel, Plattformspiel, Sounddesign, Izmir",
+    "ru": "независимая игровая студия, пиксель-арт, головоломка, платформер, звуковой дизайн, Измир"
   },
   "category": "Kurumsal",
   "name": "Sekizbit",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

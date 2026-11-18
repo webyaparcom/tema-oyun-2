@@ -3,17 +3,23 @@
   "name": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "description": {
     "tr": "Vizyonumuz",
     "en": "Our vision",
-    "ar": "رؤيتنا"
+    "ar": "رؤيتنا",
+    "de": "Unsere Vision",
+    "ru": "Наше видение"
   },
   "keyword": {
     "tr": "Vizyon",
     "en": "vision, our vision, goals",
-    "ar": "الرؤية, رؤيتنا, الأهداف"
+    "ar": "الرؤية, رؤيتنا, الأهداف",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "path": "vizyon",
   "icon": "visibility",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Vizyonumuz</h2>\n<p>Her yıl bir oyunu baştan sona kendi atölyemizde bitirmek.</p>",
     "en": "<h2>Our vision</h2>\n<p>To finish one game a year from start to end in our own workshop.</p>",
-    "ar": "<h2>رؤيتنا</h2>\n<p>أن ننجز لعبة واحدة كل عام من البداية إلى النهاية في ورشتنا.</p>"
+    "ar": "<h2>رؤيتنا</h2>\n<p>أن ننجز لعبة واحدة كل عام من البداية إلى النهاية في ورشتنا.</p>",
+    "de": "<h2>Unsere Vision</h2>\n<p>Jedes Jahr ein Spiel von Anfang bis Ende in unserer eigenen Werkstatt fertigzustellen.</p>",
+    "ru": "<h2>Наше видение</h2>\n<p>Завершать одну игру от начала до конца в нашей собственной мастерской каждый год.</p>"
   },
   "title": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "date": "2026-11-16T22:35:26.921Z",
   "update": "2026-11-16T22:46:41.481Z",
