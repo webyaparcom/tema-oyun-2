@@ -3,17 +3,23 @@
   "name": {
     "tr": "Oyunlar",
     "en": "Games",
-    "ar": "الألعاب"
+    "ar": "الألعاب",
+    "de": "Spiele",
+    "ru": "Игры"
   },
   "description": {
     "tr": "Atölyeden çıkan oyunlar ve yapım kareleri (kurgusal).",
     "en": "Games from the workshop and production frames (fictional).",
-    "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي)."
+    "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي).",
+    "de": "Spiele aus der Werkstatt und Produktionsframes (fiktional).",
+    "ru": "Игры из мастерской и кадры производства (вымышленные)."
   },
   "keyword": {
     "tr": "piksel oyun, bulmaca oyunu, platform oyunu",
     "en": "pixel game, puzzle game, platformer",
-    "ar": "لعبة بكسل، لعبة ألغاز، لعبة منصّات"
+    "ar": "لعبة بكسل، لعبة ألغاز، لعبة منصّات",
+    "de": "Pixel-Spiel, Puzzle-Spiel, Plattformspiel",
+    "ru": "пиксельная игра, головоломка, платформер"
   },
   "path": "hizmetler",
   "icon": "sports_esports",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Oyunlar",
     "en": "Games",
-    "ar": "الألعاب"
+    "ar": "الألعاب",
+    "de": "Spiele",
+    "ru": "Игры"
   },
   "date": "2026-11-16T22:35:27.296Z",
   "update": "2026-11-16T22:46:41.450Z"

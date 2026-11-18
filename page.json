@@ -5,12 +5,16 @@
       "name": {
         "tr": "Oyunlar",
         "en": "Games",
-        "ar": "الألعاب"
+        "ar": "الألعاب",
+        "de": "Spiele",
+        "ru": "Игры"
       },
       "description": {
         "tr": "Atölyeden çıkan oyunlar ve yapım kareleri (kurgusal).",
         "en": "Games from the workshop and production frames (fictional).",
-        "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي)."
+        "ar": "ألعاب الورشة ولقطات الإنتاج (افتراضي).",
+        "de": "Spiele aus der Werkstatt und Produktionsframes (fiktional).",
+        "ru": "Игры из мастерской и кадры производства (вымышленные)."
       },
       "path": "hizmetler",
       "icon": "sports_esports",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Atölye",
         "en": "Workshop",
-        "ar": "الورشة"
+        "ar": "الورشة",
+        "de": "Workshop",
+        "ru": "Воркшоп"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -52,7 +58,9 @@
       "description": {
         "tr": "Skor tablosu ve oyun ortakları (kurgusal).",
         "en": "Scoreboard and game partners (fictional).",
-        "ar": "لوحة النتائج وشركاء اللعب (افتراضي)."
+        "ar": "لوحة النتائج وشركاء اللعب (افتراضي).",
+        "de": "Punktetafel und Spielpartner (fiktiv).",
+        "ru": "Таблица результатов и партнёры по игре (вымышленные)."
       }
     },
     {
@@ -60,12 +68,16 @@
       "name": {
         "tr": "SSS",
         "en": "FAQ",
-        "ar": "الأسئلة"
+        "ar": "الأسئلة",
+        "de": "FAQ",
+        "ru": "FAQ"
       },
       "description": {
         "tr": "Merak edilenler ve kısa yanıtlar.",
         "en": "Common questions and short answers.",
-        "ar": "أسئلة متكررة وإجابات موجزة."
+        "ar": "أسئلة متكررة وإجابات موجزة.",
+        "de": "Was Sie wissen möchten, in kurzen Antworten.",
+        "ru": "Что интересует читателей — в коротких ответах."
       },
       "path": "sorular",
       "icon": "help",
@@ -85,7 +97,9 @@
       "name": {
         "tr": "İletişim",
         "en": "Contact",
-        "ar": "تواصل"
+        "ar": "تواصل",
+        "de": "Kontakt",
+        "ru": "Контакты"
       },
       "status": "play",
       "id": "iletisim",
@@ -106,7 +120,9 @@
       "description": {
         "tr": "Adres, telefon ve çalışma saatleri.",
         "en": "Address, phone and opening hours.",
-        "ar": "العنوان والهاتف وساعات العمل."
+        "ar": "العنوان والهاتف وساعات العمل.",
+        "de": "Adresse, Telefon und Öffnungszeiten.",
+        "ru": "Адрес, телефон и часы работы."
       }
     }
   ],
